@@ -18,6 +18,11 @@ const VideosListTemplate = (props) => {
 					</div>
 				</div>
 				<div className={styles.right}>
+					<CardInfo
+							teams={props.teams}
+							team={item.team}
+							date={item.date}
+					/>
 					<h2>{item.title}</h2>
 				</div>
       </div>
