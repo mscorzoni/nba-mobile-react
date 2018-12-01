@@ -137,7 +137,15 @@ class SignIn extends Component {
       <button onClick={(event) => this.submitForm(event, false)}>Register now</button>
       <button onClick={(event) => this.submitForm(event, true) }>Log in</button>
     </div>
-  )
+	)
+	
+	showError = () => (
+		this.state.registerError !== '' ?
+			<div className={styles.error}>
+				{ this.state.registerError }
+			</div>
+		: ''
+	)
 
   render() {
     return (
@@ -156,7 +164,7 @@ class SignIn extends Component {
           />
 
           {this.submitButton()}
-
+          { this.showError() }
         </form>
       </div>
     );
