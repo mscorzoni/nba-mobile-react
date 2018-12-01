@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './signin.css';
+import { firebase } from '../../firebase';
 
 import FormField from '../widgets/FormFields/formFields';
 
@@ -108,6 +109,22 @@ class SignIn extends Component {
           loading: true,
           registerError: ''
         })
+        if(type){
+          console.log('LOG IN')
+        } else {
+          firebase.auth()
+          .createUserWithEmailAndPassword(
+            dataToSubmit.email,
+            dataToSubmit.password
+          ).then(() => {
+            this.props.history.push('/')
+          }).catch(error => {
+            this.setState({
+              loading: false,
+              registerError: error.message
+            })
+          })
+        }
       }
     }
   }
